@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from transactions.models import Transaction
-from payments.models import Subscription
+# from payments.models import Subscription  # Payments app removed
 from analytics.models import ActivityLog
 
 User = get_user_model()

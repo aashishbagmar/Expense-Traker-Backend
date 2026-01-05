@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'users',
     'transactions',
-    'payments',
+    # 'payments',  # Payments app removed
     'group_expenses',
     'notifications',
     'insights',

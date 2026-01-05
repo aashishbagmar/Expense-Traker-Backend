@@ -8,7 +8,7 @@ from django.db.models import Sum, Count
 from django.utils.timezone import now
 from .models import AdminSettings
 from transactions.models import Transaction
-from payments.models import Payment
+# from payments.models import Payment  # Payments app removed
 from notifications.models import Notification
 from users.models import User
 import csv

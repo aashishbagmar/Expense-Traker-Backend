@@ -7,7 +7,7 @@ from datetime import timedelta, datetime
 from transactions.models import Transaction
 from django.contrib.auth import get_user_model
 from .serializers import UserCountSerializer, RevenueSerializer
-from payments.models import Subscription
+# from payments.models import Subscription  # Payments app removed
 from django.http import FileResponse
 from io import BytesIO
 from reportlab.lib.pagesizes import letter, A4

@@ -18,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from users.models import Profile
 from .serializers import BudgetSerializer, BudgetHistorySerializer
-from payments.models import RecurringPayment
+# from payments.models import RecurringPayment  # Payments app removed
 
 # ML Service Client (replaces direct model loading)
 from .ml_client import get_ml_client

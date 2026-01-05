@@ -34,7 +34,7 @@ urlpatterns = [
     # API Routes
     path('api/users/', include('users.urls')),
     path('api/', include('transactions.urls')),
-    path('api/', include('payments.urls')),
+    # path('api/', include('payments.urls')),  # Payments module removed
     path('api/', include('group_expenses.urls')),
     path('api/analytics/', include('analytics.urls')),
     
