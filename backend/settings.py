@@ -34,6 +34,10 @@ ALLOWED_HOSTS = ["expense-traker-backend-production.up.railway.app",
     "localhost",
     "127.0.0.1"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://expense-traker-backend-production.up.railway.app",
+    "https://*.up.railway.app",
+]
 
 # Application definition
 
