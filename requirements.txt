@@ -59,12 +59,13 @@ idna
 razorpay>=1.4,<2.0
 
 # ------------------------------
-# PDF Generation & Analytics (CRITICAL FIX)
+# PDF Generation & Analytics
 # ------------------------------
-reportlab==3.6.13
+reportlab>=4.0,<5.0
 xhtml2pdf==0.2.16
 pillow>=10.0,<12.0
 matplotlib>=3.8,<3.9
+
 
 # ------------------------------
 # Server
