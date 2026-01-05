@@ -1,5 +1,3 @@
-import razorpay
-from django.conf import settings
-
-# Initialize Razorpay Client
-razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+# Payment utilities
+# Note: Payment gateway integration removed
+# Add custom payment processing logic here if needed

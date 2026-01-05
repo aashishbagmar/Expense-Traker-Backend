@@ -286,7 +286,7 @@ def payment_management(request):
 
     # Apply filters
     if search_query:
-        payments = payments.filter(razorpay_order_id__icontains=search_query)
+        payments = payments.filter(transaction_id__icontains=search_query)
     if status_filter:
         payments = payments.filter(status=status_filter)
 
@@ -340,22 +340,21 @@ def export_payments(request):
 
     writer = csv.writer(response)
     writer.writerow([
-        "Payment ID", "User", "Razorpay Order ID", "Razorpay Payment ID",
-        "Razorpay Signature", "Amount", "Status", "Date"
+        "Payment ID", "User", "Transaction ID", "Payment Method",
+        "Amount", "Status", "Date"
     ])
 
     payments = Payment.objects.all().order_by('-created_at')  # Fetch all payments sorted by latest
 
     for payment in payments:
         writer.writerow([
-            payment.payment_id,  # Use UUID as payment ID
-            payment.user.username,  # Fetch the username of the user
-            payment.razorpay_order_id,
-            payment.razorpay_payment_id if payment.razorpay_payment_id else "N/A",
-            payment.razorpay_signature if payment.razorpay_signature else "N/A",
+            payment.payment_id,
+            payment.user.username,
+            payment.transaction_id if payment.transaction_id else "N/A",
+            payment.payment_method if payment.payment_method else "N/A",
             payment.amount,
-            payment.status,  # Use the raw status
-            payment.created_at.strftime("%Y-%m-%d %H:%M:%S")  # Format the date
+            payment.status,
+            payment.created_at.strftime("%Y-%m-%d %H:%M:%S")
         ])
 
     return response
