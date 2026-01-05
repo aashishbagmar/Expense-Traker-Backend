@@ -106,8 +106,8 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Path
 MIDDLEWARE = [
-    'django.middleware.gzip.GZipMiddleware',  # Enable compression
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.gzip.GZipMiddleware',  # Enable compression
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,7 +120,21 @@ MIDDLEWARE = [
 # CORS Configuration
 # Development: Allow all origins
 # Production: Uncomment and set specific Vercel domain
-CORS_ALLOW_ALL_ORIGINS = True  # Allow frontend access
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://expense-tracker-frontend.vercel.app",
+]
+
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "accept",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 # For production, replace CORS_ALLOW_ALL_ORIGINS with:
 # CORS_ALLOWED_ORIGINS = [
@@ -128,6 +142,10 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allow frontend access
 #     "https://your-preview-branch.vercel.app",
 # ]
 # CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://expense-tracker-frontend.vercel.app",
+]
+
 
 
 ROOT_URLCONF = 'backend.urls'
