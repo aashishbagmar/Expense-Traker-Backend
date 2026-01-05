@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+venv/
+db.sqlite3
+media/
+staticfiles/
+*.pkl
+*.joblib
+venv-backend/

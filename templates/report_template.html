@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #1e3a8a;
+            font-size: 16px;
+            border-bottom: 2px solid #c7d2fe;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        .meta-table {
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 11px;
+            background: #f1f5f9;
+        }
+        
+        .meta-table td {
+            padding: 8px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            margin-top: 15px;
+            font-size: 11px;
+        }
+        
+        .kpi-table td {
+            width: 25%;
+            text-align: center;
+            padding: 10px;
+            background: #f5f7fa;
+            border: 1px solid #dbeafe;
+        }
+        
+        .kpi-label {
+            color: #475569;
+            font-size: 10px;
+        }
+        
+        .kpi-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #111827;
+            margin-top: 5px;
+        }
+        
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+        
+        table.data-table th {
+            background: #e0e7ff;
+            color: #1e3a8a;
+            border: 1px solid #c7d2fe;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        table.data-table td {
+            border: 1px solid #c7d2fe;
+            padding: 8px;
+        }
+        
+        .insight-box {
+            border-left: 4px solid #16a34a;
+            background: #ecfdf5;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 11px;
+            color: #065f46;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 9px;
+            color: #64748b;
+            margin-top: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Financial Report</h1>
+<p class="subtitle">Personal Finance Summary</p>
+
+<!-- META -->
+<table class="meta-table">
+    <tr>
+        <td width="33%"><strong>User:</strong> {{ user_name }}</td>
+        <td width="33%"><strong>Report Period:</strong> {{ report_period }}</td>
+        <td width="34%"><strong>Generated On:</strong> {{ generated_date }}</td>
+    </tr>
+</table>
+
+<!-- EXECUTIVE SUMMARY -->
+<h2>Executive Summary</h2>
+<p style="font-size: 11px;">
+    This report presents a summary of income, expenses, and savings for the selected
+    reporting period. All values are derived from user-recorded financial transactions
+    and analyzed automatically by the system.
+</p>
+
+<!-- KPI -->
+<h2>Key Financial Indicators</h2>
+<table class="kpi-table">
+    <tr>
+        <td>
+            <div class="kpi-label">Total Income</div>
+            <div class="kpi-value">{{ total_income }}</div>
+        </td>
+        <td>
+            <div class="kpi-label">Total Expenses</div>
+            <div class="kpi-value">{{ total_expense }}</div>
+        </td>
+        <td>
+            <div class="kpi-label">Net Savings</div>
+            <div class="kpi-value">{{ net_savings }}</div>
+        </td>
+        <td>
+            <div class="kpi-label">Savings Rate</div>
+            <div class="kpi-value">{{ savings_rate }}</div>
+        </td>
+    </tr>
+</table>
+
+<!-- EXPENSE ANALYSIS -->
+<h2>Expense Analysis - Category Breakdown</h2>
+<table style="width: 100%; border: none;">
+    <tr>
+        <td style="width: 50%; vertical-align: top; border: none; padding-right: 10px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ expense_breakdown_rows }}
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%; vertical-align: top; border: none; padding-left: 10px; text-align: center;">
+            {% if pie_chart_path %}
+            <img src="{{ pie_chart_path }}" alt="Expense Distribution" style="max-width: 100%; height: auto;">
+            {% else %}
+            <div style="border: 2px dashed #93c5fd; padding: 40px; background: #f8fafc; color: #1e40af; font-size: 11px;">
+                Pie Chart Not Available
+            </div>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- TRANSACTIONS -->
+<h2>Transaction Details</h2>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ transaction_rows }}
+    </tbody>
+</table>
+
+<!-- INSIGHTS -->
+<h2>Insights & Observations</h2>
+<div class="insight-box">
+    {{ ai_insights }}
+</div>
+
+<div class="footer">
+    Auto-generated by ExpenseTracker System
+</div>
+
+</body>
+</html>
+
