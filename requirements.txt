@@ -34,11 +34,14 @@ certifi
 charset-normalizer
 idna
 
-# ------------------------------
-# PDF & Analytics (REQUESTED)
-# ------------------------------
 
+# ------------------------------
+# PDF & Analytics
+# ------------------------------
+reportlab==3.6.13
+xhtml2pdf==0.2.16
 pillow>=10.0
+matplotlib>=3.8
 
 # ------------------------------
 # Utilities
