@@ -64,6 +64,7 @@ colorama==0.4.6
 # Other
 sqlparse==0.5.3
 tzdata==2025.1
+django-cros-headers==4.7.0
 
 # ==========================================
 # REMOVED ML DEPENDENCIES (Now in ml-service):

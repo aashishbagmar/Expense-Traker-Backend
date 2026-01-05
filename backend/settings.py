@@ -65,6 +65,7 @@ INSTALLED_APPS = [
    # 'notifications',
    # "insights",
    # 'admin_dashboard',
+   'crossref','corsheaders'
    # 'frontend',
   
 ]
@@ -115,7 +116,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS Configuration
+# Development: Allow all origins
+# Production: Uncomment and set specific Vercel domain
 CORS_ALLOW_ALL_ORIGINS = True  # Allow frontend access
+
+# For production, replace CORS_ALLOW_ALL_ORIGINS with:
+# CORS_ALLOWED_ORIGINS = [
+#     "https://expense-tracker-frontend.vercel.app",
+#     "https://your-preview-branch.vercel.app",
+# ]
+# CORS_ALLOW_CREDENTIALS = True
 
 
 ROOT_URLCONF = 'backend.urls'
